@@ -16,3 +16,10 @@ CREATE TABLE Notifications (
  Date DATETIME
 )
 ```
+
+
+Depois no CMD na pasta /RabbitExemplo rodar:
+
+```
+ docker-compose up -d
+```
