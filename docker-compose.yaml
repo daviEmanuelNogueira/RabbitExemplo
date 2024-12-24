@@ -1,0 +1,63 @@
+
+services:
+  rbq:
+    image: rabbitmq:4.0-management
+    container_name: rbq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
+      
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: api
+    container_name: api
+    ports:
+      - 8080:8080
+    depends_on:
+      - rbq
+    networks:
+      - app-network
+
+
+  ws:
+    build:
+      context: ./ws
+      dockerfile: Dockerfile
+    image: ws
+    container_name: ws
+    depends_on:
+      - rbq
+    networks:
+      - app-network
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: db
+    hostname: sql1
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "24241224@Senha"
+    ports:
+    - "1433:1433"
+    volumes:
+      - db_data:/var/opt/mssql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+
+volumes:
+  db_data:
