@@ -1,6 +1,14 @@
 # RabbitExemplo
+
  
-No DB Rodas o Script:
+
+No CMD na pasta /RabbitExemplo rodar:
+
+```
+ docker-compose up -d
+```
+
+Depois no DB Rodas o Script:
 
 
 ```
@@ -17,9 +25,4 @@ CREATE TABLE Notifications (
 )
 ```
 
-
-Depois no CMD na pasta /RabbitExemplo rodar:
-
-```
- docker-compose up -d
-```
+#NOTA o WS não espera o RBQ (RabbitMQ) Iniciar, esperar um pouco s startar manualmente
