@@ -17,7 +17,7 @@ public class Worker : BackgroundService
         using var connection = await factory.CreateConnectionAsync();
         using var channel = await connection.CreateChannelAsync();
     
-        await channel.QueueDeclareAsync(queue: "reap", durable: true, exclusive: false, autoDelete: false, arguments: null);
+        await channel.QueueDeclareAsync(queue: "fila", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
         await channel.BasicQosAsync(prefetchSize: 0, prefetchCount: 1, global: false);
 
@@ -51,7 +51,7 @@ public class Worker : BackgroundService
             }
         };
 
-        await channel.BasicConsumeAsync(queue: "reap", autoAck: false, consumer: consumer);
+        await channel.BasicConsumeAsync(queue: "fila", autoAck: false, consumer: consumer);
 
         // Mantenha o serviço ativo
         await Task.Delay(Timeout.Infinite, stoppingToken);
