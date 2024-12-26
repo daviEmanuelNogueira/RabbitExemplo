@@ -58,7 +58,23 @@ O sistema possui uma API que expõe um endpoint para receber mensagens e armazen
          docker container ls
          ```
 
-3. Testar:
+3. Criação da tabela:
+     - Rode o script abaixo no SQL Server para criação do Banco e Tabela:
+         ```bash
+            CREATE DATABASE TESTE_DB
+            GO
+            
+            USE TESTE_DB
+            GO
+            
+            CREATE TABLE Notifications (
+             Id INT IDENTITY,
+             Message VARCHAR(1000),
+             Date DATETIME
+            )
+         ```
+       
+4. Testar:
      - Abra o Postman ou qualquer ferramenta de sua preferência e realize a chamada ao endpoint da API, conforme o Item 1 do **Fluxo do Sistema**.
 
 ## Tecnologias usadas
