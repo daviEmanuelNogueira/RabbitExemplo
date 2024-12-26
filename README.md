@@ -59,6 +59,7 @@ O sistema possui uma API que expõe um endpoint para receber mensagens e armazen
          ```
 
 3. Criação da tabela:
+     - Conecte ao banco de dados com **Server name**: localhost,1433 **Login**: sa e  **Password**: 24241224@Senha
      - Rode o script abaixo no SQL Server para criação do Banco e Tabela:
          ```bash
             CREATE DATABASE TESTE_DB
@@ -74,7 +75,7 @@ O sistema possui uma API que expõe um endpoint para receber mensagens e armazen
             )
          ```
        
-4. Testar:
+5. Testar:
      - Abra o Postman ou qualquer ferramenta de sua preferência e realize a chamada ao endpoint da API, conforme o Item 1 do **Fluxo do Sistema**.
 
 ## Tecnologias usadas
