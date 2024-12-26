@@ -25,6 +25,7 @@ services:
       - 8080:8080
     depends_on:
       - rbq
+      - db
     networks:
       - app-network
 
@@ -36,7 +37,8 @@ services:
     image: ws
     container_name: ws
     depends_on:
-      - rbq
+      rbq:
+        condition: service_healthy
     networks:
       - app-network
 

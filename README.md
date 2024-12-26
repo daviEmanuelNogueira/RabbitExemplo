@@ -25,4 +25,3 @@ CREATE TABLE Notifications (
 )
 ```
 
-#NOTA o WS não espera o RBQ (RabbitMQ) Iniciar, esperar um pouco s startar manualmente
