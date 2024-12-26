@@ -51,9 +51,15 @@ services:
       MSSQL_SA_PASSWORD: "24241224@Senha"
     ports:
     - "1433:1433"
+    volumes:
+      - db_data:/var/opt/mssql
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
+
+
+volumes:
+  db_data:
